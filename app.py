@@ -8,8 +8,9 @@ app = Flask(__name__)
 MAILGUN_API_KEY = os.environ['MAILGUN_API_KEY']
 MAILGUN_DOMAIN = os.environ['MAILGUN_DOMAIN']
 SITE_ADDRESS = os.environ['SITE_ADDRESS']
-TO_NAME = os.environ['USER_NAME']
-TO_EMAIL = os.environ['USER_EMAIL']
+TO_NAME = os.environ['TO_NAME']
+TO_EMAIL = os.environ['TO_EMAIL']
+SUCCESS_PAGE = os.environ['SUCCESS_PAGE']
 
 
 @app.route('/')
@@ -29,7 +30,7 @@ def send_simple_message():
             'text': request.form['message'],
         }
     )
-    return redirect(SITE_ADDRESS)
+    return redirect(SUCCESS_PAGE)
 
 
 @app.errorhandler(500)

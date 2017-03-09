@@ -22,8 +22,9 @@ All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](http
     $ heroku config:set MAILGUN_API_KEY=<KEY>
     $ heroku config:set MAILGUN_DOMAIN=<MAILGUN_DOMAIN>
     $ heroku config:set SITE_ADDRESS=<YOUR SITE URL>
-    $ heroku config:set USER_NAME=<YOUR NAME>
-    $ heroku config:set USER_EMAIL=<YOUR EMAIL>
+    $ heroku config:set SUCCESS_PAGE=<URL OF A SUCCESS PAGE TO REDIRECT TO AFTER THE MESSAGE IS SENT>
+    $ heroku config:set TO_EMAIL=<YOUR EMAIL, TO ADDRESS EMAILS TO>
+    $ heroku config:set TO_NAME=<YOUR NAME, TO ADDRESS EMAILS TO>
 ```
 
 ## Set up front-end code
