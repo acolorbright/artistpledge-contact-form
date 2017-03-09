@@ -1,26 +1,20 @@
-This is a fork of [ousenko/simple-contact-form](ousenko/simple-contact-form), changed to use Mailgun instead of
-Mandrill (which is now only available as a Mailchimp add-on).
+# Simple Contact Form Processing
 
-Simple contact form processing
-----------------------------------
+Note: This is a fork of [ousenko/simple-contact-form](http://github.com/ousenko/simple-contact-form),
+changed to use [Mailgun](https://www.mailgun.com) instead of Mandrill (which is now only available as a Mailchimp add-on).
 
-You have a static website (e.g. Jekyll), and wanna give your visitors the ability to reach you, huh?
-No problem!
+You have a static website (e.g. [Jekyll](https://jekyllrb.com)), and want to give your visitors the ability to contact you? No problem!
 
-All we need is [Mailgun](http://mailgun.com) and [Heroku](http://heroku.com) accounts, and a bit of Python to get it work.
+All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](https://www.heroku.com/), and a bit of Python.
 
 
-0. Assumptions
---------------------
+## Requirements
 
-You have:
+* A [Heroku](https://www.heroku.com/) account and the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
+* An active [Mailgun](https://www.mailgun.com) account, API key and domain
 
-* Heroku toolbelt installed
-* Active Mailgun account, API key and domain
 
-1. Create a Heroku web app
----------------------
-
+## Create and configure a Heroku web app
 
 ```bash
     $ git clone https://github.com/heldinz/simple-contact-form.git
@@ -32,20 +26,18 @@ You have:
     $ heroku config:set USER_EMAIL=<YOUR EMAIL>
 ```
 
-2. Front-end setup
--------------------
+## Set up front-end code
 
-In your HTML form code specify the following:
+In your HTML form code, specify the following.
 
 ```html
 <form action="https://<YOUR_HEROKU_APP>.herokuapp.com/send" method="POST">
-  Name: <input type="text" name="name"><br>
-  Email address: <input type="text" name="email"><br>
-  Message: <textarea name="message" cols="40" rows="5"></textarea>
+  Name: <input type="text" name="name" required><br>
+  Email address: <input type="text" name="email" required><br>
+  Message: <textarea name="message" cols="40" rows="5" required</textarea>
   <input type="submit" value="Send Message">
 </form>
 ```
 
 
-3. Enjoy! 🎉
------------
+## Enjoy! 🎉
