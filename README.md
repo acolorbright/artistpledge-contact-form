@@ -35,7 +35,7 @@ You have:
 In your form html code specify the following:
 
 ```html
-<form action="https://<YOUR_HEROKU_APP>.herokuapp.com/send">
+<form action="https://<YOUR_HEROKU_APP>.herokuapp.com/send" method="POST">
   Name: <input type="text" name="name"><br>
   Email address: <input type="text" name="email"><br>
   Message: <textarea name="message" cols="40" rows="5"></textarea>
