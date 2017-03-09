@@ -26,9 +26,9 @@ def send_simple_message():
             'from': '{0} <{1}>'.format(request.form['name'], request.form['email']),
             'to': '{0} <{1}>'.format(TO_NAME, TO_EMAIL),
             'subject': 'Message from {}'.format(request.form['name']),
-            'text': request.form['mesage'],
+            'text': request.form['message'],
         }
-)
+    )
 
 
 @app.errorhandler(500)
