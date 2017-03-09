@@ -16,7 +16,7 @@ All we need is [Mailgun](http://mailgun.com) and [Heroku](http://heroku.com) acc
 You have:
 
 * Heroku toolbelt installed
-* Active Mailgun account and API KEY
+* Active Mailgun account, API key and domain
 
 1. Create a Heroku web app
 ---------------------
