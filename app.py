@@ -23,7 +23,7 @@ def send_simple_message():
         auth=('api', MAILGUN_API_KEY),
         data={
             'from': '{0} <{1}>'.format(request.form['name'], request.form['email']),
-            'to': '{0} <{1}>'.format(TO_NAME, TO_EMAIL)
+            'to': '{0} <{1}>'.format(TO_NAME, TO_EMAIL),
             'subject': 'Message from {}'.format(request.form['name']),
             'text': request.form['mesage'],
         }
