@@ -19,7 +19,7 @@ def index():
 
 @app.route('/send', methods=['POST'])
 def send_simple_message():
-    return requests.post(
+    response = requests.post(
         'https://api.mailgun.net/v3/{}.mailgun.org/messages'.format(SANDBOX_DOMAIN),
         auth=('api', MAILGUN_API_KEY),
         data={
@@ -29,6 +29,7 @@ def send_simple_message():
             'text': request.form['message'],
         }
     )
+    return redirect(SITE_ADDRESS)
 
 
 @app.errorhandler(500)
