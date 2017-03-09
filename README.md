@@ -1,3 +1,6 @@
+This is a fork of [ousenko/simple-contact-form](ousenko/simple-contact-form), changed to use Mailgun instead of
+Mandrill (which is now only available as a Mailchimp add-on).
+
 Simple contact form processing
 ----------------------------------
 
@@ -23,7 +26,7 @@ You have:
     $ git clone https://github.com/heldinz/simple-contact-form.git
     $ heroku create <YOUR_HEROKU_APP>
     $ heroku config:set MAILGUN_API_KEY=<KEY>
-    $ heroku config:set SANDBOX_DOMAIN=<DOMAIN>
+    $ heroku config:set MAILGUN_DOMAIN=<MAILGUN_DOMAIN>
     $ heroku config:set SITE_ADDRESS=<YOUR SITE URL>
     $ heroku config:set USER_NAME=<YOUR NAME>
     $ heroku config:set USER_EMAIL=<YOUR EMAIL>
@@ -32,7 +35,7 @@ You have:
 2. Front-end setup
 -------------------
 
-In your form html code specify the following:
+In your HTML form code specify the following:
 
 ```html
 <form action="https://<YOUR_HEROKU_APP>.herokuapp.com/send" method="POST">
@@ -44,7 +47,5 @@ In your form html code specify the following:
 ```
 
 
-3. Enjoy
-----------
-
-Don't forget to star this repo! ;)
+3. Enjoy! 🎉
+-----------

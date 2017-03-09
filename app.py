@@ -6,7 +6,7 @@ from flask import Flask, request, redirect
 app = Flask(__name__)
 
 MAILGUN_API_KEY = os.environ['MAILGUN_API_KEY']
-SANDBOX_DOMAIN = os.environ['SANDBOX_DOMAIN']
+MAILGUN_DOMAIN = os.environ['MAILGUN_DOMAIN']
 SITE_ADDRESS = os.environ['SITE_ADDRESS']
 TO_NAME = os.environ['USER_NAME']
 TO_EMAIL = os.environ['USER_EMAIL']
@@ -20,7 +20,7 @@ def index():
 @app.route('/send', methods=['POST'])
 def send_simple_message():
     response = requests.post(
-        'https://api.mailgun.net/v3/{}.mailgun.org/messages'.format(SANDBOX_DOMAIN),
+        'https://api.mailgun.net/v3/{}/messages'.format(MAILGUN_DOMAIN),
         auth=('api', MAILGUN_API_KEY),
         data={
             'from': '{0} <{1}>'.format(request.form['name'], request.form['email']),
