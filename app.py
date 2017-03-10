@@ -35,6 +35,8 @@ def send_simple_message():
             Interested in: {}
             Enquiring for: {}
 
+            Subscribe to newsletter? {}
+
             Message:
             {}
             '''.format(
@@ -43,6 +45,7 @@ def send_simple_message():
                 request.form.get('phone', '–'),
                 request.form.get('interested-in', '–'),
                 request.form.get('enquiring-for', '–'),
+                request.form.get('newsletter') == 'on' and 'Yes' or 'No',
                 request.form.get('message', 'None given'),
             ),
         }
