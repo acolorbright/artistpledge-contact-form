@@ -1,11 +1,6 @@
-# Simple Contact Form Processing
+# Artist Pledge Contact Form
 
-Note: This is a fork of [ousenko/simple-contact-form](http://github.com/ousenko/simple-contact-form),
-changed to use [Mailgun](https://www.mailgun.com) instead of Mandrill (which is now only available as a Mailchimp add-on).
-
-You have a static website (e.g. [Jekyll](https://jekyllrb.com)), and want to give your visitors the ability to contact you? No problem!
-
-All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](https://www.heroku.com/), and a bit of Python.
+Contact form processing customized for [Artist Pledge](https://github.com/acolorbright/artistpledge).
 
 
 ## Requirements
@@ -17,30 +12,53 @@ All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](http
 ## Create, configure, and deploy a Heroku web app
 
 ```bash
-    $ git clone https://github.com/heldinz/simple-contact-form.git
+    $ git clone https://github.com/acolorbright/artistpledge-contact-form.git
     $ heroku create <YOUR_HEROKU_APP>
     $ heroku config:set MAILGUN_API_KEY=<KEY>
     $ heroku config:set MAILGUN_DOMAIN=<MAILGUN_DOMAIN>
-    $ heroku config:set SITE_ADDRESS=<YOUR SITE URL>
+    $ heroku config:set SITE_ADDRESS=<ARTIST PLEDGE SITE URL>
     $ heroku config:set SUCCESS_PAGE=<URL OF A SUCCESS PAGE TO REDIRECT TO AFTER THE MESSAGE IS SENT>
-    $ heroku config:set TO_EMAIL=<YOUR EMAIL, TO ADDRESS EMAILS TO>
-    $ heroku config:set TO_NAME=<YOUR NAME, TO ADDRESS EMAILS TO>
+    $ heroku config:set TO_EMAIL=<EMAIL ADDRESS TO ADDRESS EMAILS TO>
+    $ heroku config:set TO_NAME=<NAME TO ADDRESS EMAILS TO>
     $ git remote add heroku https://git.heroku.com/<YOUR_HEROKU_APP>.git
     $ git push heroku master
 ```
 
 ## Set up front-end code
 
-In your HTML form code, specify the following.
+In the HTML, specify the following.
 
 ```html
-<form action="https://<YOUR_HEROKU_APP>.herokuapp.com/send" method="POST">
-  Name: <input type="text" name="name" required><br>
-  Email address: <input type="text" name="email" required><br>
-  Message: <textarea name="message" cols="40" rows="5" required</textarea>
-  <input type="submit" value="Send Message">
-</form>
+        <form class="join-form" action="https://<YOUR_HEROKU_APP>.herokuapp.com/send" method="POST">
+          <label class="join-form__label" for="name">
+            Name
+            <input required type="text" name="name" placeholder="Name" />
+          </label>
+          <label class="join-form__label" for="email">
+            Email
+            <input required name="email" placeholder="name@gmail.com" type="email" />
+          </label>
+          <label class="join-form__label" for="phone">
+            Phone Number (optional)
+            <input name="phone" placeholder="+4412345678" type="phone" />
+          </label>
+          <fieldset>
+            <legend class="join-form__label">Are you interested in:</legend>
+            <br><label><input name="interested-in" type="radio" value="Making a pledge" /> Making a pledge</label>
+            <br><label><input name="interested-in" type="radio" value="A custom philanthropic project" /> A custom philanthropic project</label>
+          </fieldset>
+          <fieldset>
+            <legend class="join-form__label">Are you enquiring for:</legend>
+            <br><label><input name="enquiring-for" type="radio" value="Themselves" /> Yourself</label>
+            <br><label><input name="enquiring-for" type="radio" value="On behalf of an artist"/> On behalf of an artist</label>
+          </fieldset>
+          <label class="join-form__label" for="message">
+            Let us know how we can help (optional)
+            <textarea name="message"></textarea>
+          </label>
+          <label class="join-form__label" for="newsletter">
+            <input name="newsletter" type="checkbox" /> Subscribe to our newsletter
+          </label>
+          <input type="submit" value="Send&nbsp;›" />
+        </form>
 ```
-
-
-## Enjoy! 🎉
