@@ -26,8 +26,24 @@ def send_simple_message():
         data={
             'from': '{0} <{1}>'.format(request.form.get('name'), request.form.get('email')),
             'to': '{0} <{1}>'.format(TO_NAME, TO_EMAIL),
-            'subject': 'Message from {}'.format(request.form.get('name')),
-            'text': request.form.get('message'),
+            'subject': 'Artist Pledge contact request from {}'.format(request.form.get('name')),
+            'text': '''
+            From: {}
+            Email: {}
+            Phone Number: {}
+
+            Interested in: {}
+            Enquiring for: {}
+
+            Message: {}
+            '''.format(
+                request.form.get('name'),
+                request.form.get('email'),
+                request.form.get('phone'),
+                request.form.get('interested-in'),
+                request.form.get('enquiring-for'),
+                request.form.get('message'),
+            ),
         }
     )
     return redirect(SUCCESS_PAGE)
