@@ -35,14 +35,15 @@ def send_simple_message():
             Interested in: {}
             Enquiring for: {}
 
-            Message: {}
+            Message:
+            {}
             '''.format(
-                request.form.get('name'),
-                request.form.get('email'),
-                request.form.get('phone'),
-                request.form.get('interested-in'),
-                request.form.get('enquiring-for'),
-                request.form.get('message'),
+                request.form.get('name', '–'),
+                request.form.get('email', '–'),
+                request.form.get('phone', '–'),
+                request.form.get('interested-in', '–'),
+                request.form.get('enquiring-for', '–'),
+                request.form.get('message', 'None given'),
             ),
         }
     )
