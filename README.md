@@ -14,7 +14,7 @@ All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](http
 * An active [Mailgun](https://www.mailgun.com) account, API key and domain
 
 
-## Create and configure a Heroku web app
+## Create, configure, and deploy a Heroku web app
 
 ```bash
     $ git clone https://github.com/heldinz/simple-contact-form.git
@@ -25,6 +25,8 @@ All you need is accounts at [Mailgun](https://www.mailgun.com) and [Heroku](http
     $ heroku config:set SUCCESS_PAGE=<URL OF A SUCCESS PAGE TO REDIRECT TO AFTER THE MESSAGE IS SENT>
     $ heroku config:set TO_EMAIL=<YOUR EMAIL, TO ADDRESS EMAILS TO>
     $ heroku config:set TO_NAME=<YOUR NAME, TO ADDRESS EMAILS TO>
+    $ git remote add heroku https://git.heroku.com/<YOUR_HEROKU_APP>.git
+    $ git push heroku master
 ```
 
 ## Set up front-end code
