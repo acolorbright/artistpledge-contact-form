@@ -5,12 +5,12 @@ from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
-MAILGUN_API_KEY = os.environ['MAILGUN_API_KEY']
-MAILGUN_DOMAIN = os.environ['MAILGUN_DOMAIN']
-SITE_ADDRESS = os.environ['SITE_ADDRESS']
-TO_NAME = os.environ['TO_NAME']
-TO_EMAIL = os.environ['TO_EMAIL']
-SUCCESS_PAGE = os.environ['SUCCESS_PAGE']
+MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
+MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN')
+SITE_ADDRESS = os.getenv('SITE_ADDRESS')
+TO_NAME = os.getenv('TO_NAME')
+TO_EMAIL = os.getenv('TO_EMAIL')
+SUCCESS_PAGE = os.getenv('SUCCESS_PAGE')
 
 
 @app.route('/')
@@ -24,10 +24,10 @@ def send_simple_message():
         'https://api.mailgun.net/v3/{}/messages'.format(MAILGUN_DOMAIN),
         auth=('api', MAILGUN_API_KEY),
         data={
-            'from': '{0} <{1}>'.format(request.form['name'], request.form['email']),
+            'from': '{0} <{1}>'.format(request.form.get('name'), request.form.get('email')),
             'to': '{0} <{1}>'.format(TO_NAME, TO_EMAIL),
-            'subject': 'Message from {}'.format(request.form['name']),
-            'text': request.form['message'],
+            'subject': 'Message from {}'.format(request.form.get('name')),
+            'text': request.form.get('message'),
         }
     )
     return redirect(SUCCESS_PAGE)
